@@ -1,24 +1,22 @@
-// Stwórz prostą aplikację GUI w Swing, która zawiera JFrame z tytułem, rozmiarem i opcją
-// zamykania. Wewnątrz JFrame dodaj JPanel z kilkoma komponentami: JLabel, JTextField,
-// JPasswordField, JButton i JTextArea. Pozwól użytkownikom wprowadzać tekst w polach tekstowych i
-// wyświetlać wprowadzone dane w JTextArea po kliknięciu przycisku.
-
+// Stwórz GUI do sprawdzania siły hasła. Udostępnij pole tekstowe do wprowadzania haseł oraz przycisk do sprawdzania
+// siły hasła. Zaimplementuj logikę oceny siły hasła (np. długość, rodzaje znaków) i wyświetl wynik w oknie dialogowym
+// lub na interfejsie.
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Zad1 {
+public class Zad5 {
     private final JFrame frame;
     private final JPanel panel;
     private final JLabel labelUsername, labelPassword;
     private final JTextField textField;
     private final JPasswordField passwordField;
     private final JButton button;
-    private final JTextArea textArea;
+    private final JButton buttonCheck;
 
-    public Zad1(String[] args) {
+    public Zad5(String[] args) {
         frame = new JFrame("Logowanie");
         panel = new JPanel(new GridBagLayout());
         labelUsername = new JLabel("Nazwa użytkownika:");
@@ -26,7 +24,7 @@ public class Zad1 {
         textField = new JTextField(15);
         passwordField = new JPasswordField(15);
         button = new JButton("Zaloguj");
-        textArea = new JTextArea();
+        buttonCheck = new JButton("Sprawdź siłę swojego hasła");
     }
 
     public void show() {
@@ -35,13 +33,10 @@ public class Zad1 {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
         frame.setLocationRelativeTo(null);                      // Ustawienie okna na środku ekranu
-        textArea.setEditable(false);                                // JTextArea tylko do odczytu
 
         panel.setBackground(Color.decode("#DC667C"));       // Ustawienie koloru tła
-        textArea.setBackground(Color.decode("#DC667C"));
         textField.setBackground(Color.decode("#DC667C"));
         passwordField.setBackground(Color.decode("#DC667C"));
-        button.setBackground(Color.decode("#A3A3A3"));
 
         // Ustawianie układu
         GridBagConstraints gbc = new GridBagConstraints();
@@ -82,7 +77,7 @@ public class Zad1 {
         gbc.gridy = 3;
         gbc.gridwidth = 2; // Rozciąga na całą szerokość panelu
         gbc.fill = GridBagConstraints.HORIZONTAL;               // Wypełnia całą szerokość
-        panel.add(textArea, gbc);
+        panel.add(buttonCheck, gbc);
 
         // Obsługa zdarzeń dla przycisków
         button.addActionListener(new ActionListener() {
@@ -98,8 +93,34 @@ public class Zad1 {
                     JOptionPane.showMessageDialog(frame, "Musisz podać hasło!", "Błąd", JOptionPane.ERROR_MESSAGE); // Tworzymy nowe okno z komunikatem błędu
                 }
                 else {
-                    textArea.setText("Twoja nazwa użytkowanika: " + login + "\nTwoje hasło: " + password); // Ustawiamy nowy tekst na etykiecie
+                    textField.setText("");
+                    passwordField.setText("");
                 }
+            }
+        });
+
+        buttonCheck.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                char[] passwordChars = passwordField.getPassword();
+                String password = new String(passwordChars);
+                String passwordStrength;
+                int specialCharCount = 0;
+
+                // Zestaw znaków specjalnych
+                String specialChars = "!@#$%^&*()_+-=[]{}|;:',.<>?/";
+
+                // Iteracja przez każdy znak w haśle
+                for (char c : password.toCharArray()) {
+                    if (specialChars.contains(String.valueOf(c))) {
+                        specialCharCount++;
+                    }
+                }
+                if(specialCharCount<2) passwordStrength = "Słabe";
+                else if(specialCharCount<6) passwordStrength = "Średnie";
+                else passwordStrength = "Mocne";
+
+                JOptionPane.showMessageDialog(null, passwordStrength, "Siła hasła w skali 1-10:", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -109,7 +130,7 @@ public class Zad1 {
     public static void main(final String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new Zad1(args).show();
+                new Zad5(args).show();
             }
         });
     }
