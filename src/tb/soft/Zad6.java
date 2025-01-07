@@ -1,4 +1,4 @@
-// Utwórz aplikację GUI do zarządzania listą kontaktów, w której użytkownicy mogą dodawać, edytować i usuwać
+package tb.soft;// Utwórz aplikację GUI do zarządzania listą kontaktów, w której użytkownicy mogą dodawać, edytować i usuwać
 // kontakty. Każdy wpis kontaktu powinien zawierać pola na imię, numer telefonu i adres e-mail. Pozwól użytkownikom
 // modyfikować lub usuwać kontakty oraz wyświetlaj listę kontaktów w obszarze przewijalnym.
 

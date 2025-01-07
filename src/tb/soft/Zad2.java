@@ -1,7 +1,6 @@
-// Stwórz prostą aplikację GUI w Swing, która zawiera JFrame z tytułem, rozmiarem i opcją
-// zamykania. Wewnątrz JFrame dodaj JPanel z kilkoma komponentami: JLabel, JTextField,
-// JPasswordField, JButton i JTextArea. Pozwól użytkownikom wprowadzać tekst w polach tekstowych i
-// wyświetlać wprowadzone dane w JTextArea po kliknięciu przycisku.
+package tb.soft;// W Twoim interfejsie Swing umożliw użytkownikom dynamiczną zmianę koloru, rozmiaru i pozycji komponentów.
+// Dodaj przyciski, które, po kliknięciu, zmienią kolor określonego komponentu, zmienią jego rozmiar lub przesuną
+// wewnątrz JFrame. Możesz użyć JDialog lub JOptionPane do pobierania od użytkownika informacji (np. wyboru koloru).
 
 
 import javax.swing.*;
@@ -9,23 +8,26 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Zad1 {
+public class Zad2 {
     private final JFrame frame;
     private final JPanel panel;
     private final JLabel labelUsername, labelPassword;
     private final JTextField textField;
     private final JPasswordField passwordField;
-    private final JButton button;
+    private final JButton button, colorButton, resizeButton, moveButton;
     private final JTextArea textArea;
 
-    public Zad1(String[] args) {
+    public Zad2(String[] args) {
         frame = new JFrame("Logowanie");
         panel = new JPanel(new GridBagLayout());
         labelUsername = new JLabel("Nazwa użytkownika:");
         labelPassword = new JLabel("Hasło:");
-        textField = new JTextField(15);
-        passwordField = new JPasswordField(15);
+        textField = new JTextField(25);
+        passwordField = new JPasswordField(25);
         button = new JButton("Zaloguj");
+        colorButton = new JButton("Zmień kolor przycisku \"Zaloguj\"");
+        resizeButton = new JButton("Zmień rozmiar przycisku \"Zaloguj\"");
+        moveButton = new JButton("Przesuń przycisk \"Zaloguj\"");
         textArea = new JTextArea();
     }
 
@@ -84,7 +86,28 @@ public class Zad1 {
         gbc.fill = GridBagConstraints.HORIZONTAL;               // Wypełnia całą szerokość
         panel.add(textArea, gbc);
 
-        // Obsługa zdarzeń dla przycisków
+        // Ustawienia miejsca i dodanie do Panel dla colorButton
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
+        panel.add(colorButton, gbc);
+
+        // Ustawienia miejsca i dodanie do Panel dla resizeButton
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
+        panel.add(resizeButton, gbc);
+
+        // Ustawienia miejsca i dodanie do Panel dla moveButton
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.gridwidth = 2; // Rozciąga na całą szerokość panelu
+        gbc.fill = GridBagConstraints.HORIZONTAL;               // Wypełnia całą szerokość
+        panel.add(moveButton, gbc);
+
+        // Obsługa zdarzeń dla przycisku Zaloguj
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -103,13 +126,58 @@ public class Zad1 {
             }
         });
 
+        // Obsługa zdarzeń dla przycisku zmiany koloru
+        colorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Color newColor = JColorChooser.showDialog(frame, "Okno dialogowe do wyboru koloru", Color.BLUE);
+                if (newColor != null) {
+                    button.setBackground(newColor);
+                }
+            }
+        });
+
+        // Obsługa zdarzeń dla przycisku zmiany rozmiaru
+        resizeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String newWidth = JOptionPane.showInputDialog(frame, "Podaj nową szerokość:");
+                String newHeight = JOptionPane.showInputDialog(frame, "Podaj nową wysokość:");
+
+                try {
+                    int width = Integer.parseInt(newWidth);
+                    int height = Integer.parseInt(newHeight);
+                    button.setSize(width, height);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(frame, "Wprowadź poprawne liczby.");
+                }
+            }
+        });
+
+        // Obsługa zdarzeń dla przycisku zmiany położenia
+        moveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String newX = JOptionPane.showInputDialog(frame, "Podaj nową pozycję X dla przycisku \"Zaloguj\"");
+                String newY = JOptionPane.showInputDialog(frame, "Podaj nową pozycję Y dla przycisku \"Zaloguj\"");
+
+                try{
+                    int x = Integer.parseInt(newX);
+                    int y = Integer.parseInt(newY);
+                    button.setLocation(x,y);
+                } catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(frame, "Wprowadź poprawne dane");
+                }
+            }
+        });
+
         frame.setVisible(true);
     }
 
     public static void main(final String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new Zad1(args).show();
+                new Zad2(args).show();
             }
         });
     }

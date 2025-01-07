@@ -1,4 +1,4 @@
-// Stwórz okno dialogowe, które prosi użytkownika o podanie swojego imienia. Po kliknięciu "OK" wyświetl
+package tb.soft;// Stwórz okno dialogowe, które prosi użytkownika o podanie swojego imienia. Po kliknięciu "OK" wyświetl
 // wiadomość powitalną w głównym oknie za pomocą JOptionPane lub niestandardowego okna dialogowego (JDialog).
 // Upewnij się, że okno dialogowe można łatwo zamknąć, a wprowadzone imię może być wyświetlane w głównym oknie.
 
