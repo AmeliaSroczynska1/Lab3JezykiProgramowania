@@ -1,4 +1,4 @@
-package tb.soft;// Stwórz okno dialogowe, które prosi użytkownika o podanie swojego imienia. Po kliknięciu "OK" wyświetl
+// Stwórz okno dialogowe, które prosi użytkownika o podanie swojego imienia. Po kliknięciu "OK" wyświetl
 // wiadomość powitalną w głównym oknie za pomocą JOptionPane lub niestandardowego okna dialogowego (JDialog).
 // Upewnij się, że okno dialogowe można łatwo zamknąć, a wprowadzone imię może być wyświetlane w głównym oknie.
 
@@ -30,7 +30,7 @@ public class Zad3 {
         textArea.setEditable(false);                                // JTextArea tylko do odczytu
         panel.add(textArea);
 
-        String name = JOptionPane.showInputDialog(frame, "Wprowadź swoj imię");
+        String name = JOptionPane.showInputDialog(frame, "Wprowadź swoje imię");
 
         textArea.setText("Witaj " + name);
 

@@ -2,7 +2,6 @@
 // zamykania. Wewnątrz JFrame dodaj JPanel z kilkoma komponentami: JLabel, JTextField,
 // JPasswordField, JButton i JTextArea. Pozwól użytkownikom wprowadzać tekst w polach tekstowych i
 // wyświetlać wprowadzone dane w JTextArea po kliknięciu przycisku.
-package tb.soft;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,13 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Zad1 {
-    private final JFrame frame;
-    private final JPanel panel;
-    private final JLabel labelUsername, labelPassword;
-    private final JTextField textField;
-    private final JPasswordField passwordField;
-    private final JButton button;
-    private final JTextArea textArea;
+    private JFrame frame;
+    private JPanel panel;
+    private JLabel labelUsername, labelPassword;
+    private JTextField textField;
+    private JPasswordField passwordField;
+    private JButton button;
+    private JTextArea textArea;
 
     public Zad1(String[] args) {
         frame = new JFrame("Logowanie");
@@ -34,10 +33,10 @@ public class Zad1 {
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
-        frame.setLocationRelativeTo(null);                      // Ustawienie okna na środku ekranu
+        frame.setLocationRelativeTo(null);                          // Ustawienie okna na środku ekranu
         textArea.setEditable(false);                                // JTextArea tylko do odczytu
 
-        panel.setBackground(Color.decode("#DC667C"));       // Ustawienie koloru tła
+        panel.setBackground(Color.decode("#DC667C"));           // Ustawienie koloru tła
         textArea.setBackground(Color.decode("#DC667C"));
         textField.setBackground(Color.decode("#DC667C"));
         passwordField.setBackground(Color.decode("#DC667C"));
@@ -80,7 +79,7 @@ public class Zad1 {
         // Ustawienia miejsca i dodanie do Panel dla textArea
         gbc.gridx = 0;
         gbc.gridy = 3;
-        gbc.gridwidth = 2; // Rozciąga na całą szerokość panelu
+        gbc.gridwidth = 2;                                      // Rozciąga na całą szerokość panelu
         gbc.fill = GridBagConstraints.HORIZONTAL;               // Wypełnia całą szerokość
         panel.add(textArea, gbc);
 
@@ -102,7 +101,6 @@ public class Zad1 {
                 }
             }
         });
-
         frame.setVisible(true);
     }
 

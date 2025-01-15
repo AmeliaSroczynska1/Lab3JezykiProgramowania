@@ -1,5 +1,3 @@
-package tb.soft;
-
 import javax.swing.SwingUtilities;
 
 public class Template {

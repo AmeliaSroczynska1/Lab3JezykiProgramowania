@@ -1,4 +1,4 @@
-package tb.soft;// Utwórz aplikację GUI do zarządzania listą kontaktów, w której użytkownicy mogą dodawać, edytować i usuwać
+// Utwórz aplikację GUI do zarządzania listą kontaktów, w której użytkownicy mogą dodawać, edytować i usuwać
 // kontakty. Każdy wpis kontaktu powinien zawierać pola na imię, numer telefonu i adres e-mail. Pozwól użytkownikom
 // modyfikować lub usuwać kontakty oraz wyświetlaj listę kontaktów w obszarze przewijalnym.
 
@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Zad6 {
-
     private final JFrame frame;
     private final JTable table;
     private final DefaultTableModel tableModel;
@@ -41,7 +40,6 @@ public class Zad6 {
     public void show() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 400);
-        frame.getContentPane().setBackground(Color.decode("#DC667C")); // Ustawienie tła okna
         panel.setBackground(Color.decode("#DC667C")); // Ustawienie tła panelu
         scrollPane.getViewport().setBackground(Color.decode("#DC667C")); // Tło dla JScrollPane
         table.setBackground(Color.decode("#DC667C")); // Tło dla tabeli

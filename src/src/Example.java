@@ -1,9 +1,9 @@
-package tb.soft;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
 
 public class Example {
     private final JFrame frame;          // Główne okno aplikacji

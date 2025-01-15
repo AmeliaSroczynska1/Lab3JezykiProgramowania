@@ -1,7 +1,6 @@
-package tb.soft;// W Twoim interfejsie Swing umożliw użytkownikom dynamiczną zmianę koloru, rozmiaru i pozycji komponentów.
+// W Twoim interfejsie Swing umożliw użytkownikom dynamiczną zmianę koloru, rozmiaru i pozycji komponentów.
 // Dodaj przyciski, które, po kliknięciu, zmienią kolor określonego komponentu, zmienią jego rozmiar lub przesuną
 // wewnątrz JFrame. Możesz użyć JDialog lub JOptionPane do pobierania od użytkownika informacji (np. wyboru koloru).
-
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,13 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Zad2 {
-    private final JFrame frame;
-    private final JPanel panel;
-    private final JLabel labelUsername, labelPassword;
-    private final JTextField textField;
-    private final JPasswordField passwordField;
-    private final JButton button, colorButton, resizeButton, moveButton;
-    private final JTextArea textArea;
+    private JFrame frame;
+    private JPanel panel;
+    private JLabel labelUsername, labelPassword;
+    private JTextField textField;
+    private JPasswordField passwordField;
+    private JButton button, colorButton, resizeButton, moveButton;
+    private JTextArea textArea;
 
     public Zad2(String[] args) {
         frame = new JFrame("Logowanie");
@@ -36,10 +35,10 @@ public class Zad2 {
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
-        frame.setLocationRelativeTo(null);                      // Ustawienie okna na środku ekranu
+        frame.setLocationRelativeTo(null);                          // Ustawienie okna na środku ekranu
         textArea.setEditable(false);                                // JTextArea tylko do odczytu
 
-        panel.setBackground(Color.decode("#DC667C"));       // Ustawienie koloru tła
+        panel.setBackground(Color.decode("#DC667C"));           // Ustawienie koloru tła
         textArea.setBackground(Color.decode("#DC667C"));
         textField.setBackground(Color.decode("#DC667C"));
         passwordField.setBackground(Color.decode("#DC667C"));
@@ -130,7 +129,7 @@ public class Zad2 {
         colorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Color newColor = JColorChooser.showDialog(frame, "Okno dialogowe do wyboru koloru", Color.BLUE);
+                Color newColor = JColorChooser.showDialog(frame, "Okno dialogowe do wyboru koloru", Color.BLUE); // Domyślny kolor niebieski
                 if (newColor != null) {
                     button.setBackground(newColor);
                 }
@@ -170,7 +169,6 @@ public class Zad2 {
                 }
             }
         });
-
         frame.setVisible(true);
     }
 

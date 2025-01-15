@@ -1,4 +1,4 @@
-package tb.soft;// Stwórz GUI do sprawdzania siły hasła. Udostępnij pole tekstowe do wprowadzania haseł oraz przycisk do sprawdzania
+// Stwórz GUI do sprawdzania siły hasła. Udostępnij pole tekstowe do wprowadzania haseł oraz przycisk do sprawdzania
 // siły hasła. Zaimplementuj logikę oceny siły hasła (np. długość, rodzaje znaków) i wyświetl wynik w oknie dialogowym
 // lub na interfejsie.
 
@@ -123,7 +123,6 @@ public class Zad5 {
                 JOptionPane.showMessageDialog(null, passwordStrength, "Siła hasła w skali 1-10:", JOptionPane.INFORMATION_MESSAGE);
             }
         });
-
         frame.setVisible(true);
     }
 

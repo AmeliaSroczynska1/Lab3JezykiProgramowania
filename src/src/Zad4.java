@@ -1,4 +1,4 @@
-package tb.soft;// Stwórz prosty interfejs kalkulatora, który zawiera przyciski z cyframi i podstawowymi operacjami (dodawanie,
+// Stwórz prosty interfejs kalkulatora, który zawiera przyciski z cyframi i podstawowymi operacjami (dodawanie,
 // odejmowanie, mnożenie, dzielenie). Pozwól użytkownikom wykonywać obliczenia i wyświetlać wyniki w polu JTextField
 // lub JLabel. Upewnij się, że elementy GUI są odpowiednio dostosowane pod względem rozmiaru i pozycji.
 
@@ -36,7 +36,7 @@ public class Zad4 {
         buttonMultiply = new JButton("*");
         buttonDivide = new JButton("/");
         buttonClear = new JButton("C");
-
+        
         addListeners();
     }
 
@@ -60,11 +60,11 @@ public class Zad4 {
         button8.addActionListener(numberListener);
         button9.addActionListener(numberListener);
 
-        // Dodanie słuchaczy do przycisków operatorów
+        // Dodanie słuchaczy do przycisków operatorów 
         buttonPlus.addActionListener(e -> setOperator("+"));
         buttonMinus.addActionListener(e -> setOperator("-"));
-        buttonMultiply.addActionListener(e -> setOperator("*"));
-        buttonDivide.addActionListener(e -> setOperator("/"));
+        buttonMultiply.addActionListener(e -> setOperator("*")); 
+        buttonDivide.addActionListener(e -> setOperator("/")); 
 
         // Oblicza wynik i wyświetla go w polu tekstowym
         buttonEqual.addActionListener(e -> calculateResult());
